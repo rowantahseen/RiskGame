@@ -2,7 +2,6 @@ package board;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import players.*;
 
 public class Map {
@@ -13,7 +12,7 @@ public class Map {
 	
 	private final Color[] colors = {Color.red, Color.blue, Color.green, Color.yellow, Color.cyan, Color.magenta};
 
-	private LinkedList<Territory>[] map;
+	private ArrayList<Territory>[] map;
 	private Pair[] playerTerritories;
 
 	
@@ -53,7 +52,7 @@ public class Map {
 		}
 	}
 		
-	public LinkedList<Territory>[] getMap(){
+	public ArrayList<Territory>[] getMap(){
 		return this.map;
 	}
 	
@@ -82,7 +81,7 @@ public class Map {
 	}
 	
 	private void buildStates() {
-		this.map = new LinkedList[51];
+		this.map = new ArrayList[51];
 		
 		Territory[] states = new Territory[51];
 
@@ -153,7 +152,7 @@ public class Map {
 	}
 	
 	private void buildEgypt() {
-		// this.map = ;
+		this.map = new ArrayList[29];
 	}
 	
 	private class Pair {

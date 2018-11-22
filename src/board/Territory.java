@@ -1,9 +1,8 @@
 package board;
 
 import dice.*;
-import players.Player;
 
-public class Territory implements Comparable{
+public class Territory implements Comparable {
 	
 	private final int id;
 	private int troops;
