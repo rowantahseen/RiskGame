@@ -36,6 +36,7 @@ public abstract class Player {
 	}
 	
 	protected boolean attack() {
+		
 		this.setEnemyTerritories();
 		//May need that
 		this.setMyTerritories();

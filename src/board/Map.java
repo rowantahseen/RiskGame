@@ -149,6 +149,63 @@ public class Map {
         map[24].add(states[23]);map[24].add(states[25]);map[24].add(states[26]);map[24].add(states[31]);
 
         map[25].add(states[24]);map[25].add(states[26]);
+        
+        map[26].add(states[24]);map[26].add(states[25]);map[26].add(states[27]);map[26].add(states[28]);
+        map[26].add(states[31]);
+        
+        map[27].add(states[26]);map[27].add(states[28]);
+        
+        map[28].add(states[26]);map[28].add(states[27]);map[28].add(states[29]);map[28].add(states[31]);
+        
+        map[29].add(states[28]);map[29].add(states[30]);map[29].add(states[31]);map[29].add(states[32]);
+        map[29].add(states[48]);
+        
+        map[30].add(states[29]);map[30].add(states[32]);map[30].add(states[37]);map[30].add(states[38]);
+        map[30].add(states[48]);
+        
+        map[31].add(states[20]);map[31].add(states[21]);map[31].add(states[23]);map[31].add(states[24]);
+        map[31].add(states[26]);map[31].add(states[28]);map[31].add(states[29]);map[31].add(states[32]);
+        
+        map[32].add(states[20]);map[32].add(states[29]);map[32].add(states[30]);map[32].add(states[31]);
+        map[32].add(states[33]);map[32].add(states[35]);map[32].add(states[37]);
+        
+        map[33].add(states[19]);map[33].add(states[20]);map[33].add(states[32]);map[33].add(states[34]);
+        map[33].add(states[35]);
+        
+        map[34].add(states[18]);map[34].add(states[19]);map[34].add(states[33]);map[30].add(states[36]);
+        
+        map[35].add(states[32]);map[35].add(states[33]);map[35].add(states[36]);map[35].add(states[37]);
+        
+        map[36].add(states[34]);map[36].add(states[35]);map[36].add(states[37]);
+        
+        map[37].add(states[30]);map[37].add(states[32]);map[37].add(states[35]);map[37].add(states[36]);
+        map[37].add(states[38]);
+        
+        map[38].add(states[30]);map[38].add(states[37]);map[38].add(states[39]);map[38].add(states[46]);
+        map[38].add(states[47]);map[38].add(states[48]);
+        
+        map[39].add(states[38]);map[39].add(states[40]);map[39].add(states[43]);map[39].add(states[45]);
+        map[39].add(states[46]);
+        
+        map[40].add(states[39]);map[40].add(states[41]);map[40].add(states[43]);
+        
+        map[41].add(states[40]);map[41].add(states[42]);map[41].add(states[43]);
+        
+        map[42].add(states[41]);
+        
+        map[43].add(states[39]);map[43].add(states[40]);map[43].add(states[41]);map[43].add(states[44]);
+        map[43].add(states[45]);
+        
+        map[44].add(states[43]);map[44].add(states[45]);
+        
+        map[45].add(states[39]);map[45].add(states[43]);map[45].add(states[44]);
+        
+        map[46].add(states[38]);map[46].add(states[39]);map[46].add(states[47]);
+        
+        map[47].add(states[38]);map[47].add(states[46]);map[47].add(states[48]);
+        
+        map[48].add(states[29]);map[48].add(states[30]);map[48].add(states[38]);map[48].add(states[47]);
+          
 	}
 	
 	private void buildEgypt() {

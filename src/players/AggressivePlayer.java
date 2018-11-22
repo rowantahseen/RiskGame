@@ -41,21 +41,23 @@ public class AggressivePlayer extends Player {
 		
 		super.attack();
 		
-		// Sorting Descendingly
+		// Sorting Enemy Territories Descendingly
 		Territory[] toArray = (Territory[]) enemyTerritories.toArray();
         Arrays.sort(toArray, Collections.reverseOrder());
 	
-		// attack first eligible territory
-        // Still need to accommodate attacking multiple territories
+        // Sort My Territories Ascendingly ?
+        
+        // STILL NEED TO ACCOMODATE FOR ATTACKING MULTIPLE TERRITORIES
+        
+        // Attack first eligible territory
 		for (Territory t: toArray) {
 			for(Territory myT: myTerritories) {
 				if(this.map.adjacent(t, myT) && myT.getTroops() > 1) {
-					
+					return myT.attackTerritory(t);
 				}
 			}
 		}
-
-		return true;
+		return false;
 	}
 
 
