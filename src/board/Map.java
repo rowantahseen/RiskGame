@@ -13,7 +13,8 @@ public class Map {
 	private final Color[] colors = {Color.red, Color.blue, Color.green, Color.yellow, Color.cyan, Color.magenta};
 
 	private ArrayList<Territory>[] map;
-	private Pair[] playerTerritories;
+	private ArrayList<Player> players;
+	private ArrayList<Territory>[] playerTerritories;
 
 	
 	private Map() {}
@@ -28,25 +29,26 @@ public class Map {
 	public void configure(boolean terrain, int[] playerModes) {
 		this.setMap(terrain);
 		
-		playerTerritories = new Pair[playerModes.length];
+		players = new ArrayList(playerModes.length);
+		playerTerritories = new ArrayList[playerModes.length];
 		
 		for(int i=0; i < playerModes.length; i++) {
 			switch(playerModes[i]) {
-				case (1): playerTerritories[i].player = new HumanPlayer(colors[i]);
+				case (1): players.add(new HumanPlayer(colors[i]));
 					break;
-				case (2): playerTerritories[i].player = new PassivePlayer(colors[i]);
+				case (2): players.add(new PassivePlayer(colors[i]));
 					break;
-				case (3): playerTerritories[i].player = new AggressivePlayer(colors[i]);
+				case (3): players.add(new AggressivePlayer(colors[i]));
 					break;
-				case (4): playerTerritories[i].player = new SemiPassivePlayer(colors[i]);
+				case (4): players.add(new SemiPassivePlayer(colors[i]));
 					break;	
-				case (5): playerTerritories[i].player = new GreedyAIPlayer(colors[i]);
+				case (5): players.add(new GreedyAIPlayer(colors[i]));
 					break;					
-				case (6): playerTerritories[i].player = new AStarPlayer(colors[i]);
+				case (6): players.add(new AStarPlayer(colors[i]));
 					break;
-				case (7): playerTerritories[i].player = new RealTimeAStarPlayer(colors[i]);
+				case (7): players.add(new RealTimeAStarPlayer(colors[i]));
 					break;
-				case (8): playerTerritories[i].player = new MinimaxPlayer(colors[i]);
+				case (8): players.add(new MinimaxPlayer(colors[i]));
 					break;
 			}
 		}
@@ -56,14 +58,14 @@ public class Map {
 		return this.map;
 	}
 	
-	public Player[] getPlayers() {
-		return this.getPlayers();
+	public ArrayList<Player> getPlayers() {
+		return this.players;
 	}
 	
 	public ArrayList<Territory> getPlayerTerritory(Player p){
-		for(Pair pair : this.playerTerritories) {
-			if(pair.player.equals(p)) {
-				return pair.territories;
+		for(Player player : this.players) {
+			if(player.equals(p)) {
+				return playerTerritories[players.indexOf(player)];
 			}
 		}
 		return null;
@@ -211,22 +213,5 @@ public class Map {
 	private void buildEgypt() {
 		this.map = new ArrayList[29];
 	}
-	
-	private class Pair {
 		
-		private Player player;
-		private ArrayList<Territory> territories;
-		
-		private Pair() {}
-		
-		private void addTerritory(Territory t) {
-			this.territories.add(t);
-		}
-		
-		private void removeTerritory(Territory t) {
-			this.territories.remove(t);
-		}
-		
-	}
-	
 }

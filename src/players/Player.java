@@ -49,6 +49,7 @@ public abstract class Player {
 		// based on fact there are only 2 players
 		// For more we gotta add each opponents to Arraylist
 		for(Player p : Map.getInstance().getPlayers()) {
+			
 			if(!p.equals(this)) {
 				enemyTerritories = this.map.getPlayerTerritory(p);
 			}
