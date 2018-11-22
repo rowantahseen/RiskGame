@@ -1,6 +1,7 @@
 package board;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import players.*;
 
@@ -9,10 +10,12 @@ public class Map {
 	private static Map INSTANCE;
 	private static final boolean EGYPT = false;
 	private static final boolean USA = true;
+	
+	private final Color[] colors = {Color.red, Color.blue, Color.green, Color.yellow, Color.cyan, Color.magenta};
 
 	private LinkedList<Territory>[] map;
-	private Player[] players;
-	private Color[] colors = {Color.red, Color.blue, Color.green, Color.yellow, Color.cyan, Color.magenta};
+	private Pair[] playerTerritories;
+
 	
 	private Map() {}
 	
@@ -26,14 +29,26 @@ public class Map {
 	public void configure(boolean terrain, int[] playerModes) {
 		this.setMap(terrain);
 		
-		players = new Player[playerModes.length];
+		playerTerritories = new Pair[playerModes.length];
 		
 		for(int i=0; i < playerModes.length; i++) {
 			switch(playerModes[i]) {
-				case (1): players[i] = new PassivePlayer(colors[i]);
-				// Other cases
-				
-				
+				case (1): playerTerritories[i].player = new HumanPlayer(colors[i]);
+					break;
+				case (2): playerTerritories[i].player = new PassivePlayer(colors[i]);
+					break;
+				case (3): playerTerritories[i].player = new AggressivePlayer(colors[i]);
+					break;
+				case (4): playerTerritories[i].player = new SemiPassivePlayer(colors[i]);
+					break;	
+				case (5): playerTerritories[i].player = new GreedyAIPlayer(colors[i]);
+					break;					
+				case (6): playerTerritories[i].player = new AStarPlayer(colors[i]);
+					break;
+				case (7): playerTerritories[i].player = new RealTimeAStarPlayer(colors[i]);
+					break;
+				case (8): playerTerritories[i].player = new MinimaxPlayer(colors[i]);
+					break;
 			}
 		}
 	}
@@ -44,6 +59,15 @@ public class Map {
 	
 	public Player[] getPlayers() {
 		return this.getPlayers();
+	}
+	
+	public ArrayList<Territory> getPlayerTerritory(Player p){
+		for(Pair pair : this.playerTerritories) {
+			if(pair.player.equals(p)) {
+				return pair.territories;
+			}
+		}
+		return null;
 	}
 	
 	public boolean adjacent(Territory t1, Territory t2) {
@@ -131,5 +155,22 @@ public class Map {
 	private void buildEgypt() {
 		// this.map = ;
 	}
+	
+	private class Pair {
 		
+		private Player player;
+		private ArrayList<Territory> territories;
+		
+		private Pair() {}
+		
+		private void addTerritory(Territory t) {
+			this.territories.add(t);
+		}
+		
+		private void removeTerritory(Territory t) {
+			this.territories.remove(t);
+		}
+		
+	}
+	
 }

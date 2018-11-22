@@ -22,6 +22,9 @@ public class AggressivePlayer extends Player {
 	}
 	
 	protected boolean deployTroops() {
+		
+		super.deployTroops();
+		
 		int max = Integer.MIN_VALUE;
 		Territory maxT = null;
 		for(Territory t: myTerritories) {
@@ -35,7 +38,8 @@ public class AggressivePlayer extends Player {
 	}
 	
 	protected boolean attack() {
-		this.setEnemyTerritories();
+		
+		super.attack();
 		
 		// Sorting Descendingly
 		Territory[] toArray = (Territory[]) enemyTerritories.toArray();

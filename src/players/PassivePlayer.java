@@ -20,6 +20,9 @@ public class PassivePlayer extends Player {
 	}
 	
 	protected boolean deployTroops() {
+		
+		super.deployTroops();
+		
 		int min = Integer.MAX_VALUE;
 		Territory minT = null;
 		for(Territory t: myTerritories) {
@@ -31,10 +34,4 @@ public class PassivePlayer extends Player {
 		minT.setTroops(minT.getTroops() + this.freeTroops);
 		return true;
 	}
-	
-	protected boolean attack() {
-		
-		return true;
-	}
-
 }

@@ -29,10 +29,17 @@ public abstract class Player {
 	}
 	
 	protected boolean deployTroops() {
+		
+		this.setMyTerritories();
+		
 		return true;
 	}
 	
 	protected boolean attack() {
+		this.setEnemyTerritories();
+		//May need that
+		this.setMyTerritories();
+		
 		return true;
 	}
 	
@@ -40,11 +47,15 @@ public abstract class Player {
 		
 		// based on fact there are only 2 players
 		// For more we gotta add each opponents to Arraylist
-		for(Player p: map.getInstance().getPlayers()) {
+		for(Player p : Map.getInstance().getPlayers()) {
 			if(!p.equals(this)) {
-				this.enemyTerritories = p.myTerritories;
+				enemyTerritories = this.map.getPlayerTerritory(p);
 			}
 		}
+	}
+	
+	protected void setMyTerritories() {
+		myTerritories = this.map.getPlayerTerritory(this);
 	}
 	
 }

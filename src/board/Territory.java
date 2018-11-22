@@ -7,7 +7,6 @@ public class Territory implements Comparable{
 	
 	private final int id;
 	private int troops;
-	private Player holder;
 	
 	protected Territory(int id) {
 		this.id = id;
@@ -26,17 +25,7 @@ public class Territory implements Comparable{
 		return this.id;
 	}
 	
-	///// MAY REMOVE THIS - MAP KEEPS TRACK OF TERRITORY HOLDERS /////
-	public void setHolder(Player holder) {
-		this.holder = holder;
-	}
-	
-	public Player getHolder() {
-		return this.holder;
-	}
-	
 	///// Attack an adjacent Territory /////
-
 	public boolean attackTerritory(Territory t) {
 	// Returns true if attack was successful	
 		

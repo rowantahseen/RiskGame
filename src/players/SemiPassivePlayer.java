@@ -14,7 +14,8 @@ public class SemiPassivePlayer extends PassivePlayer {
 	}
 	
 	protected boolean attack() {
-		this.setEnemyTerritories();
+		
+		super.attack();
 		
 		// Sorting Ascendingly
 		Territory[] toArray = (Territory[]) enemyTerritories.toArray();
